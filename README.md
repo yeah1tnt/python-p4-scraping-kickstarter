@@ -9,7 +9,15 @@
 
 ## Key Vocab
 
-- **Vocab Term**: definition. Continuation of definition.
+- **Web scraping**: Web scraping, web harvesting, or web data extraction is
+ data scraping used for extracting data from websites
+- **HTML**: The HyperText Markup Language or HTML is the standard markup
+ language for documents designed to be displayed in a web browser.
+- **CSS**: Cascading Style Sheets is a style sheet language used for
+ describing the presentation of a document written in a markup language
+ such as HTML or XML.
+- **CSS selector**: CSS selectors define the elements to which a set of CSS
+ rules apply.
 
 ***
 
@@ -323,6 +331,8 @@ Finally, it's just a matter of grabbing each of the data points using the
 selectors we've already figured out, and adding them to each project's dictionary. So,
 our complete code will look something like this:
 
+### Final Code
+
 ```py
 # file: kickstarter_scraper.py
 from bs4 import BeautifulSoup
@@ -350,6 +360,3 @@ def create_project_dict():
   # return the projects dictionary
   return projects
 ```
-
-We did it! Run the test suite and you should see that all of the tests are
-passing.
