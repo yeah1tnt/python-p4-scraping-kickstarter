@@ -55,10 +55,11 @@ These individual project dictionaries will be collected into a larger dictionary
 
 In the directory of this project, you'll notice a folder called `fixtures`.
 Inside that folder, you'll see a file, `kickstarter.html`. If you are using the
-Learn IDE right click on the `kickstarter.html` file and select `Show in Finder`. Once Finder opens double click `kickstarter.html` to view the file
-inside your default web browser. If you are not using the Learn IDE, try open
-`kickstarter.html` inside your text editor and right-click anywhere on the page
-to select `open in browser` from the menu that appears.
+Learn IDE right click on the `kickstarter.html` file and select
+`Show in Finder`. Once Finder opens double click `kickstarter.html` to view the
+file inside your default web browser. If you are not using the Learn IDE, try
+open `kickstarter.html` inside your text editor and right-click anywhere on the
+page to select `open in browser` from the menu that appears.
 
 Ta-da! We're looking at a web page. For the purposes of this lab, we won't be
 scraping a live web page. We'll be scraping this HTML page. We're doing this for
@@ -67,7 +68,7 @@ material that will change, things could get really confusing. Secondly, it is
 common to keep data that the test suite will use to test your program in a
 `fixtures` directory.
 
-So, for this lab, we _don't need requests. We're not opening a live web page.
+So, for this lab, we _don't need requests_. We're not opening a live web page.
 
 ***
 
@@ -331,22 +332,25 @@ Finally, it's just a matter of grabbing each of the data points using the
 selectors we've already figured out, and adding them to each project's dictionary. So,
 our complete code will look something like this:
 
-### Final Code
+### Solution Code
 
 ```py
 # file: kickstarter_scraper.py
 from bs4 import BeautifulSoup
 import ipdb
+
 # projects: kickstarter.select("li.project.grid_4")[0]
 # title: project.select("h2.bbcard_name strong a")[0].text
 # image link: project.select("div.project-thumbnail a img")[0]['src']
 # description: project.select("p.bbcard_blurb")[0].text
 # location: project.select("ul.project-meta span.location-name")[0].text
 # percent_funded: project.select("ul.project-stats li.first.funded strong")[0].text.replace("%","")
+
 def create_project_dict():
   html = ''
   with open('./fixtures/kickstarter.html') as file:
         html = file.read()
+
   kickstarter = BeautifulSoup(html, 'html.parser')
   projects = {}
   # Iterate through the projects
@@ -357,6 +361,8 @@ def create_project_dict():
       'description': project.select("p.bbcard_blurb")[0].text,
       'location': project.select("ul.project-meta span.location-name")[0].text,
       'percent_funded': project.select("ul.project-stats li.first.funded strong")[0].text.replace("%","")
+
   # return the projects dictionary
   return projects
+
 ```
